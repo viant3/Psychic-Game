@@ -1,12 +1,12 @@
 //scoring variables
 var userWins = 0;
 var userLoses = 0;
-var guessesLeft = 9;
+guessesLeft = 9;
 var guessed = 0;
 
-var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+var compPossibles = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var userTypedText = document.getElementById("userTyped-text")
-var computerChoiceText = document.getElementById("computerchoice-text");
+var compPossiblesText = document.getElementById("compPossibles-text");
 
 
 document.onkeyup = function(event) {
@@ -14,23 +14,35 @@ document.onkeyup = function(event) {
 var userTyped = event.key;
 
 //variable for computer choice
-var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-
-console.log("You chose letter " + userTyped);
-console.log("The computer chose letter " + computerGuess);
+var psychicChoice = compPossibles[Math.floor(Math.random() * compPossibles.length)];
 
 
 
-if (userTyped === computerGuess) {
+if ((userTyped === psychicChoice) && (guessesLeft > 0)) {
     userWins++;
-    console.log("your score is " + userWins);
-// } else {
-//         guessesLeft--;
-//         guessed++;
-//         if(guessed === 9) {
-//  userLoses++;
-// }
-//     }
-//
+
+    console.log("You chose letter " + userTyped);
+    console.log("The computer chose letter " + psychicChoice);
+
+    console.log("It's a match! Your score is: " + userWins);
     }
+else if ((userLoses < 9) && (guessesLeft > 0)) {
+
+    userLoses++;
+    guessesLeft--;
+
+    console.log("You chose letter " + userTyped);
+    console.log("The computer chose letter " + psychicChoice);
+
+    console.log("Not a match. Number of losses so far: " + userLoses);
+    console.log("Number of guesses left: " + guessesLeft);
+    }
+else {
+
+    userLoses = 0;
+    guessesLeft = 9;
+    
+    console.log("Game over. Try again");
+    }
+
 } 
