@@ -2,25 +2,26 @@
 var userWins = 0;
 var userLoses = 0;
 var guessesLeft = 9;
+var lettersGuessed = [];
 
-
-var compPossibles = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-var userTypedText = document.getElementById("userTyped-text")
-
+var compPossibles = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 
 document.onkeyup = function (event) {
     //variable to get user input
     var userTyped = event.key;
+    lettersGuessed.push(userTyped);
 
+   
     //variable for computer choice
+
     var psychicChoice = compPossibles[Math.floor(Math.random() * compPossibles.length)];
 
-    //variables for user input
 
     var winsText = document.getElementById("wins-text");
     var lossesText = document.getElementById("losses-text");
-  
+    var guessedText = document.getElementById("guessedText");
+
 
     if ((userTyped === psychicChoice) && (guessesLeft > 0)) {
         userWins++;
@@ -52,7 +53,26 @@ document.onkeyup = function (event) {
         console.log("Game over. Try again");
     }
 
+      
+// var lettersGuessed = [];
+//  var pick;
+ 
+// for (var i = 0; i < 4; i++) {
+//   pick = userTyped;
+
+
+//   lettersGuessed.push(pick);
+// }
+
+
+// for (var j = 0; j < lettersGuessed.length; j++) {
+
+
+//   console.log(lettersGuessed);
+
     winsText.textContent = "wins: " + userWins;
     lossesText.textContent = "losses: " + userLoses;
     guessesLeftText.textContent = "guesses left: " + guessesLeft;
-} 
+    guessedText.textContent = "Letters guessed so far " + lettersGuessed;
+
+}
