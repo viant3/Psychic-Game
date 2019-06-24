@@ -28,14 +28,16 @@ document.onkeyup = function (event) {
     if ((userTyped === psychicChoice) && (guessesLeft > 0)) {
         userWins++;
 
+        guessesLeft = 9;
+        lettersGuessed = [];
+
         console.log("You chose letter " + userTyped);
         console.log("The computer chose letter " + psychicChoice);
 
         console.log("It's a match! Your score is: " + userWins);
     }
-    else if ((userLoses < 9) && (guessesLeft > 0)) {
+    else if  (guessesLeft > 0) {
 
-        userLoses++;
         guessesLeft--;
 
 
@@ -48,9 +50,8 @@ document.onkeyup = function (event) {
     else {
 
         // reset the game variables 
-        userLoses = 0;
+        userLoses++;
         guessesLeft = 9;
-        userWins = 0;
         lettersGuessed = [];
 
         console.log("Game over. Try again");
