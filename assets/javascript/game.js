@@ -8,12 +8,14 @@ var compPossibles = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
 
 
 document.onkeyup = function (event) {
-    //variable to get user input
+    //var to get user input
     var userTyped = event.key;
+
+    //var to popuate array with user key press
     lettersGuessed.push(userTyped);
 
-   
-    //variable for computer choice
+
+    //var for computer choice
 
     var psychicChoice = compPossibles[Math.floor(Math.random() * compPossibles.length)];
 
@@ -49,30 +51,14 @@ document.onkeyup = function (event) {
         userLoses = 0;
         guessesLeft = 9;
         userWins = 0;
+        lettersGuessed = [];
 
         console.log("Game over. Try again");
     }
 
-      
-// var lettersGuessed = [];
-//  var pick;
- 
-// for (var i = 0; i < 4; i++) {
-//   pick = userTyped;
-
-
-//   lettersGuessed.push(pick);
-// }
-
-
-// for (var j = 0; j < lettersGuessed.length; j++) {
-
-
-//   console.log(lettersGuessed);
-
     winsText.textContent = "wins: " + userWins;
     lossesText.textContent = "losses: " + userLoses;
     guessesLeftText.textContent = "guesses left: " + guessesLeft;
-    guessedText.textContent = "Letters guessed so far " + lettersGuessed;
+    guessedText.textContent = "Letters guessed so far: " + lettersGuessed;
 
 }
