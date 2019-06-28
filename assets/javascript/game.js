@@ -33,17 +33,15 @@ document.onkeyup = function (event) {
 
         console.log("You chose letter " + userTyped);
         console.log("The computer chose letter " + psychicChoice);
-
         console.log("It's a match! Your score is: " + userWins);
     }
-    else if  (guessesLeft > 0) {
+    else if (guessesLeft > 0) {
 
         guessesLeft--;
 
 
         console.log("You chose letter " + userTyped);
         console.log("The computer chose letter " + psychicChoice);
-
         console.log("Not a match. Number of losses so far: " + userLoses);
         console.log("Number of guesses left: " + guessesLeft);
     }
@@ -57,9 +55,9 @@ document.onkeyup = function (event) {
         console.log("Game over. Try again");
     }
 
-    winsText.textContent = "wins: " + userWins;
-    lossesText.textContent = "losses: " + userLoses;
-    guessesLeftText.textContent = "guesses left: " + guessesLeft;
+    winsText.textContent = "Wins: " + userWins;
+    lossesText.textContent = "Losses: " + userLoses;
+    guessesLeftText.textContent = "Guesses left: " + guessesLeft;
     guessedText.textContent = "Letters guessed so far: " + lettersGuessed;
 
 }
