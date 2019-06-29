@@ -3,6 +3,7 @@ var userWins = 0;
 var userLoses = 0;
 var guessesLeft = 9;
 var lettersGuessed = [];
+var lettersThisGame = [];
 
 var compPossibles = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
@@ -13,7 +14,7 @@ document.onkeyup = function (event) {
 
     //var to popuate array with user key press
     lettersGuessed.push(userTyped);
-
+    lettersThisGame.push(userTyped);
 
     //var for computer choice
 
@@ -22,6 +23,7 @@ document.onkeyup = function (event) {
 
     var winsText = document.getElementById("wins-text");
     var lossesText = document.getElementById("losses-text");
+    var guessedThisGame = document.getElementById("lettersThisGame");
     var guessedText = document.getElementById("guessedText");
 
 
@@ -29,7 +31,7 @@ document.onkeyup = function (event) {
         userWins++;
 
         guessesLeft = 9;
-        lettersGuessed = [];
+        lettersThisGame = [];
 
         console.log("You chose letter " + userTyped);
         console.log("The computer chose letter " + psychicChoice);
@@ -50,7 +52,7 @@ document.onkeyup = function (event) {
         // reset the game variables 
         userLoses++;
         guessesLeft = 9;
-        lettersGuessed = [];
+        lettersThisGame = [];
 
         console.log("Game over. Try again");
     }
@@ -58,6 +60,7 @@ document.onkeyup = function (event) {
     winsText.textContent = "Wins: " + userWins;
     lossesText.textContent = "Losses: " + userLoses;
     guessesLeftText.textContent = "Guesses left: " + guessesLeft;
-    guessedText.textContent = "Letters guessed so far: " + lettersGuessed;
+    guessedThisGame.textContent = "Letters guessed in this game: " + lettersThisGame;
+    guessedText.textContent = "Total letters picked: " + lettersGuessed;
 
 }
