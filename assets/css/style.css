@@ -15,3 +15,14 @@ p {
     font-size: 1.2em;
     padding-bottom: 10px;
 }
+
+.whiteBox {
+    background-color: #ffffff;
+    border-style: ridge;
+    border-width: 2px;
+    float: left;
+    padding: 15px;
+    width: 40%;
+    max-width: 40%;
+    word-wrap: break-word;
+}
