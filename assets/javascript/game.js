@@ -15,8 +15,8 @@ function compGuess() {
 
 document.onkeyup = function (event) {
     //var to get user input
-    var userTyped = event.key;
-
+    var userTyped = event.key.toLowerCase();
+   
     //var to popuate array with user key press
 
     lettersThisGame.push(userTyped);
