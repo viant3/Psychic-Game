@@ -13,6 +13,12 @@ function compGuess() {
     psychicChoice = compPossibles[Math.floor(Math.random() * compPossibles.length)];
 }
 
+
+function resetVar() {
+    guessesLeft = 9;
+    lettersThisGame = [];
+}
+
 document.onkeyup = function (event) {
     //var to get user input
     var userTyped = event.key.toLowerCase();
@@ -31,38 +37,41 @@ document.onkeyup = function (event) {
     if ((userTyped === psychicChoice) && (guessesLeft > 0)) {
 
         userWins++;
-        guessesLeft = 9;
-        lettersThisGame = [];
+      
 
         console.log("You chose letter " + userTyped);
         console.log("The computer chose letter " + psychicChoice);
         console.log("It's a match! Your score is: " + userWins);
+
+        resetVar();
         compGuess();
+        guessedThisGame.textContent = "You guessed correctly! Try Again"
     }
-    else if (guessesLeft > 0) {
+    else if (guessesLeft == 1) {
+      
+        userLoses++;
+        resetVar();
+        compGuess();
+        guessedThisGame.textContent = "Apparently you aren't Psychic... Try Again";
+        console.log("Game over. Try again");
+ 
+    }
+
+    else  {
 
         guessesLeft--;
-
+        guessedThisGame.textContent = "Letters guessed in this game: " + lettersThisGame;
 
         console.log("You chose letter " + userTyped);
         console.log("The computer chose letter " + psychicChoice);
         console.log("Number of guesses left: " + guessesLeft);
     }
-    else {
-
-        // reset the game variables 
-        userLoses++;
-        guessesLeft = 9;
-        lettersThisGame = [];
-        compGuess();
-
-        console.log("Game over. Try again");
-    }
+   
 
     winsText.textContent = "Wins: " + userWins;
     lossesText.textContent = "Losses: " + userLoses;
     guessesLeftText.textContent = "Guesses left: " + guessesLeft;
-    guessedThisGame.textContent = "Letters guessed in this game: " + lettersThisGame;
+   
 
 
 }
